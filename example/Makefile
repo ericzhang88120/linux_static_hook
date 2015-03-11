@@ -1,17 +1,20 @@
-CC=g++
+CXX=g++
 TARGET=example
 CPPFLAGS = -g -Wall
+OBJDIR=.obj
 SRC=$(wildcard(*.c))
 DIR = $(nodir $(SRC))
-OBJ=$(patsubst %c,%.o,$(DIR)) 
+OBJ=example.o
 all:$(TARGET)
-$(TARGET):$(OBJ)
-	$(CC) $^ -o $@
-%.o: %.c
-	$(CC) -c $(CPPFLAGS) $< -o $@ 
+$(TARGET):$(OBJDIR) $(OBJ)
+	$(CXX) -o $@ $(CPPFLAGS) $(OBJDIR)/*.o 
+$(OBJ):%.o:%.c
+	$(CXX) -c $< -o $(OBJDIR)/$@
+$(OBJDIR):
+	mkdir -p ./$@
 .PHONY:clean
 clean:
-	rm -f *.o
+	rm -f $(OBJDIR)/*.o
 	rm $(TARGET)
 test:
-	echo $SRC
+	@echo $(TARGET)
