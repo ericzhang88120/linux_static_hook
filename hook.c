@@ -35,7 +35,7 @@ int detect_target()
 {
     int pid=getpid();
     char path_buffer [128];
-    snprintf(path_buffer, 128, "/proc/%d/exe", pid);
+    snprintf(path_buffer, 128, "/proc/%d/exe1", pid);
     char buffer [128];
     int result = readlink(path_buffer, buffer, 128);
     buffer[result] = 0;
