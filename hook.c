@@ -143,6 +143,7 @@ void * find_func(int pid, char* funcname)
 	return address;
 }
 
+//aviod fork bomb new process will load this so also
 int detect_target()
 {
     int pid=getpid();
