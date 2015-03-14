@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 
 void test()
 {
@@ -7,7 +8,11 @@ void test()
 }
 int main(int argc,char* argv[])
 {
-	//run a function which is used for hook
-	test();
+	while(true)
+	{
+		//run a function which is used for hook
+		test();
+		sleep(1);
+	}
 	return 0;
 }

@@ -33,8 +33,10 @@ void hook_user_func(const char* funcName)
 	}
 	myhookfunc = Myhook;
 	address_new = (void*)myhookfunc;
-	pirntf("debug: old address %p new address %p\n",address_old,address_new);
+	printf("debug: old address %p new address %p\n",address_old,address_new);
 	//second replace it
+	my_hook_func.address_old = address_old;
+    my_hook_func.address_new = address_new;
 	replace_func(&my_hook_func);
 	printf("replace_func succeed\n");
 	
